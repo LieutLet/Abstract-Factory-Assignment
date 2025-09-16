@@ -3,51 +3,8 @@
 # using the Abstract Factory pattern
 
 from typing import List
-
-class Chair:
-    """Basic chair class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def sit_on(self):
-        print(f"Sitting on a {self.style} chair made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} chair made of {self.material} - ${self.price}"
-
-
-class Table:
-    """Basic table class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def place_items(self):
-        print(f"Placing items on a {self.style} table made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} table made of {self.material} - ${self.price}"
-
-
-class Sofa:
-    """Basic sofa class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def relax_on(self):
-        print(f"Relaxing on a {self.style} sofa made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} sofa made of {self.material} - ${self.price}"
-
+from interfacesFurniture import *
+from interfacesFactory import *
 
 class FurnitureShop:
     """The problematic FurnitureShop class - tightly coupled!"""

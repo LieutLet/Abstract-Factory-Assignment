@@ -1,0 +1,3 @@
+from interfacesFurniture import *
+
+class 
