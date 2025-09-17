@@ -3,16 +3,16 @@
 # using the Abstract Factory pattern
 
 from typing import List
-from interfacesFurniture import *
-from interfacesFactory import *
+from concreteFurniture import *
+from concreteFactory import *
 
 class FurnitureShop:
     """The problematic FurnitureShop class - tightly coupled!"""
     
     def __init__(self):
-        self.chairs: List[Chair] = []
-        self.tables: List[Table] = []
-        self.sofas: List[Sofa] = []
+        self.chairs: List = []
+        self.tables: List = []
+        self.sofas: List = []
     
     def create_furniture_set(self, style: str):
         """This method violates the Open/Closed Principle
@@ -20,18 +20,22 @@ class FurnitureShop:
         
         style = style.lower()
         
+        #new styles can be added more easily using the Abstract Factory pattern
         if style == "modern":
-            self.chairs.append(Chair("Modern", "Steel and Leather", 299.99))
-            self.tables.append(Table("Modern", "Glass and Chrome", 599.99))
-            self.sofas.append(Sofa("Modern", "Microfiber", 899.99))
+            factory = ModernFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         elif style == "victorian":
-            self.chairs.append(Chair("Victorian", "Mahogany", 499.99))
-            self.tables.append(Table("Victorian", "Oak", 799.99))
-            self.sofas.append(Sofa("Victorian", "Velvet", 1299.99))
+            factory = VictorianFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         elif style == "artdeco":
-            self.chairs.append(Chair("Art Deco", "Walnut", 399.99))
-            self.tables.append(Table("Art Deco", "Marble and Brass", 999.99))
-            self.sofas.append(Sofa("Art Deco", "Silk", 1599.99))
+            factory = ArtDecoFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         else:
             print(f"Unknown furniture style: {style}")
     

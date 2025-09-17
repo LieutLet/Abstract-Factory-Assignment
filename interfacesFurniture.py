@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 #all chair styles inherit from IChair
 class IChair(ABC):
-    """Basic chair class - current implementation"""
+    """Basic chair class - new implementation"""
     
     def __init__(self, style: str, material: str, price: float):
         self.style = style
@@ -18,7 +18,7 @@ class IChair(ABC):
     
 #all table styles inherit from ITable
 class ITable(ABC):
-    """Basic table class - current implementation"""
+    """Basic table class - new implementation"""
     
     def __init__(self, style: str, material: str, price: float):
         self.style = style
@@ -33,7 +33,7 @@ class ITable(ABC):
 
 #all sofa styles inherit from ISofa
 class ISofa(ABC):
-    """Basic sofa class - current implementation"""
+    """Basic sofa class - new implementation"""
     
     def __init__(self, style: str, material: str, price: float):
         self.style = style

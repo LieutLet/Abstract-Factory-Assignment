@@ -5,13 +5,13 @@ from abc import ABC, abstractmethod
 class FurnitureFactory(ABC):
     
     @abstractmethod
-    def createChair():
+    def createChair(self):
         pass
 
     @abstractmethod
-    def createTable():
+    def createTable(self):
         pass
     
     @abstractmethod
-    def createSofa():
+    def createSofa(self):
         pass
