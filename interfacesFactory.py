@@ -3,10 +3,15 @@
 from abc import ABC, abstractmethod
 
 class FurnitureFactory(ABC):
-    style
+    
+    @abstractmethod
+    def createChair():
+        pass
 
-    def createChair(style):
-        
-    def createTable(style):
-
-    def createSofa(style);
+    @abstractmethod
+    def createTable():
+        pass
+    
+    @abstractmethod
+    def createSofa():
+        pass
