@@ -2,12 +2,13 @@
 # This code demonstrates a tightly coupled design that needs refactoring
 # using the Abstract Factory pattern
 
+# now refactored to use Abstract Factory pattern
+
 from typing import List
 from concreteFurniture import *
 from concreteFactory import *
 
 class FurnitureShop:
-    """The problematic FurnitureShop class - tightly coupled!"""
     
     def __init__(self):
         self.chairs: List = []
@@ -15,7 +16,7 @@ class FurnitureShop:
         self.sofas: List = []
     
     def create_furniture_set(self, style: str):
-        """This method violates the Open/Closed Principle
+        """This method no longer violates the Open/Closed Principle
         Adding new styles requires modifying this code"""
         
         style = style.lower()
