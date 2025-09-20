@@ -84,9 +84,7 @@ class VictorianTable(ITable):
     def get_description(self):
         return f"{self.style} Table - Material: {self.material}, Price: ${self.price}"
 
-#===================================================================================================================#
-#Sofa Implementations
-#===================================================================================================================#
+
 class ArtDecoTable(ITable):
     def __init__(self):
         self.style = "Art Deco"
@@ -99,6 +97,9 @@ class ArtDecoTable(ITable):
     def get_description(self):
         return f"{self.style} Table - Material: {self.material}, Price: ${self.price}"
 
+#===================================================================================================================#
+#Sofa Implementations
+#===================================================================================================================#
 class ModernSofa(ISofa):
     def __init__(self):
         self.style = "Modern"
