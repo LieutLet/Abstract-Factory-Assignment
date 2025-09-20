@@ -2,79 +2,41 @@
 # This code demonstrates a tightly coupled design that needs refactoring
 # using the Abstract Factory pattern
 
+# now refactored to use Abstract Factory pattern
+
 from typing import List
-
-class Chair:
-    """Basic chair class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def sit_on(self):
-        print(f"Sitting on a {self.style} chair made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} chair made of {self.material} - ${self.price}"
-
-
-class Table:
-    """Basic table class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def place_items(self):
-        print(f"Placing items on a {self.style} table made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} table made of {self.material} - ${self.price}"
-
-
-class Sofa:
-    """Basic sofa class - current implementation"""
-    
-    def __init__(self, style: str, material: str, price: float):
-        self.style = style
-        self.material = material
-        self.price = price
-    
-    def relax_on(self):
-        print(f"Relaxing on a {self.style} sofa made of {self.material}")
-    
-    def get_description(self) -> str:
-        return f"{self.style} sofa made of {self.material} - ${self.price}"
-
+from concreteFurniture import *
+from concreteFactory import *
 
 class FurnitureShop:
-    """The problematic FurnitureShop class - tightly coupled!"""
     
     def __init__(self):
-        self.chairs: List[Chair] = []
-        self.tables: List[Table] = []
-        self.sofas: List[Sofa] = []
+        self.chairs: List = []
+        self.tables: List = []
+        self.sofas: List = []
     
     def create_furniture_set(self, style: str):
-        """This method violates the Open/Closed Principle
+        """This method no longer violates the Open/Closed Principle
         Adding new styles requires modifying this code"""
         
         style = style.lower()
         
+        #new styles can be added more easily using the Abstract Factory pattern
         if style == "modern":
-            self.chairs.append(Chair("Modern", "Steel and Leather", 299.99))
-            self.tables.append(Table("Modern", "Glass and Chrome", 599.99))
-            self.sofas.append(Sofa("Modern", "Microfiber", 899.99))
+            factory = ModernFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         elif style == "victorian":
-            self.chairs.append(Chair("Victorian", "Mahogany", 499.99))
-            self.tables.append(Table("Victorian", "Oak", 799.99))
-            self.sofas.append(Sofa("Victorian", "Velvet", 1299.99))
+            factory = VictorianFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         elif style == "artdeco":
-            self.chairs.append(Chair("Art Deco", "Walnut", 399.99))
-            self.tables.append(Table("Art Deco", "Marble and Brass", 999.99))
-            self.sofas.append(Sofa("Art Deco", "Silk", 1599.99))
+            factory = ArtDecoFurnitureFactory()
+            self.chairs.append(factory.createChair())
+            self.tables.append(factory.createTable())
+            self.sofas.append(factory.createSofa())
         else:
             print(f"Unknown furniture style: {style}")
     
